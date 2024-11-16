@@ -12,6 +12,7 @@ import Register from "./routes/register/register";
 import About from "./routes/about/about";
 import Contact from "./routes/contact/contact";
 import Faqs from "./routes/faqs/faqs";
+import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 
 function App() {
 
@@ -60,6 +61,10 @@ function App() {
         {
           path: "/profile",
           element: <ProfilePage />
+         },
+        {
+          path: "/profile/update",
+          element: <ProfileUpdatePage />
          },
       ],
     },
