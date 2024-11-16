@@ -3,11 +3,15 @@ import { useContext, useState } from "react";
 import { AuthContext } from "../../context/AuthContext";
 import apiRequest from "../../lib/apiRequest.js"
 import "./profileUpdatePage.scss";
+import {useNavigate} from "react-router-dom";
+import UploadWidget from "../../components/uploadWidget/UploadWidget.jsx";
 
 function ProfileUpdatePage() {
-  const [error, setError] = useState("");
-
   const { currentUser, updateUser } = useContext(AuthContext);
+  const [error, setError] = useState("");
+  const [avatar, setAvatar] = useState(currentUser.avatar);
+
+  const navigate = useNavigate()
 
   const handleSubmit = async (e) => {
     e.preventDefault()
@@ -15,11 +19,12 @@ function ProfileUpdatePage() {
     const {username, email, password} = Object.fromEntries(formData);
 
     try {
-      
       const res = await apiRequest.put(`/users/${currentUser.id}`, {
-        username, email, password,
+        username, email, password, avatar,
       });
       updateUser(res.data);
+      navigate("/profile");
+
     } catch (err) {
       console.log(err);
       setError(err.response.data.message);
@@ -62,7 +67,17 @@ function ProfileUpdatePage() {
         </form>
       </div>
       <div className="sideContainer">
-        <img src={currentUser.avatar || "/noavatar.png"} alt="" className="avatar" />
+        <img src={ avatar || "/noavatar.png"} alt="" className="avatar" />
+
+        <UploadWidget uwConfig={{
+            cloudName: "drm5bmcip",
+            uploadPreset: "dormfinder",
+            multiple: false,
+            maxImageFileSize: 2000000,
+            folder: "avatars"
+        }}
+        setAvatar={setAvatar}
+      />
       </div>
     </div>
   );
