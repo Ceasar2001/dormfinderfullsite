@@ -32,7 +32,7 @@ function NewPostPage() {
           property: inputs.property,
           latitude: inputs.latitude,
           longitude: inputs.longitude,
-          images: images,
+          images: images.images,
         },
         postDetail: {
           desc: value,
@@ -87,29 +87,26 @@ function NewPostPage() {
               <input min={1} id="bathroom" name="bathroom" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="latitude">Latitude</label>
+              <label htmlFor="latitude">Location Latitude</label>
               <input id="latitude" name="latitude" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="longitude">Longitude</label>
+              <label htmlFor="longitude">Location Longitude</label>
               <input id="longitude" name="longitude" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="type">Type</label>
+              <label htmlFor="type">Stay Type</label>
               <select name="type">
-                <option value="rent" defaultChecked>
-                  Rent
-                </option>
-                <option value="buy">Buy</option>
+                <option value="rent" defaultChecked>LongTerm</option>
+                <option value="buy">ShortTerm</option>
               </select>
             </div>
             <div className="item">
-              <label htmlFor="type">Property</label>
+              <label htmlFor="type">Property Type</label>
               <select name="property">
                 <option value="apartment">Apartment</option>
                 <option value="house">House</option>
-                <option value="condo">Condo</option>
-                <option value="land">Land</option>
+                <option value="Dormitory">Dormitory</option>
               </select>
             </div>
             <div className="item">
@@ -141,15 +138,15 @@ function NewPostPage() {
               <input min={0} id="size" name="size" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="school">School</label>
+              <label htmlFor="school">School Distance</label>
               <input min={0} id="school" name="school" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="bus">bus</label>
+              <label htmlFor="bus">Bus Distance</label>
               <input min={0} id="bus" name="bus" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="restaurant">Restaurant</label>
+              <label htmlFor="restaurant">Restaurant Distance</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
             </div>
             <button className="sendButton">Add</button>

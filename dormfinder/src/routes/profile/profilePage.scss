@@ -35,11 +35,14 @@
                 }
 
                 button{
-                    padding: 12px 24px;
-                    background-color: #30c116;
+                    padding: 10px 30px;
+                    background-color: #27c116;
                     cursor: pointer;
                     border: none;
+                    border-radius: 10px;
+                    color: white;
                 }
+                
             }
 
             .info{
@@ -49,20 +52,51 @@
                 padding-top: 5%;
                 padding-bottom: 5%;
 
+                .btn_container{
+                    display: flex;
+                    gap: 20px;
+                }
+
+                .updateBtn{
+                    width: 140px;
+                    background-color: #27c116;
+                    cursor: pointer;
+                    border: none;
+                    border-radius: 5px;
+                    color: white;
+                }
+
                 span{
                     display: flex;
                     align-items: center;
-                    gap: 20px;
+                    gap: 10px;
+
+
+                }
+
+                .uname{
+                        gap: 20px;
+                        font-weight: bold;
+                }
+
+                .email{
+                        gap: 53px;
+                        font-weight: bold;
+                }
+
+                .avatar{
+                    gap: 44px;
                 }
 
                 button{
                     width: 100px;
-                    background-color: red;
+                    background-color: rgba(208, 17, 17, 0.77);
                     border: none;
                     color: white;
                     padding: 10px 20px;
                     cursor: pointer;
                     border-radius: 5px;
+                    font-weight: bold;
                 }
 
                 img{

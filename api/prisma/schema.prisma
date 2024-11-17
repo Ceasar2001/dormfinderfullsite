@@ -1,46 +1,113 @@
-// This is your Prisma schema file,
-// learn more about it in the docs: https://pris.ly/d/prisma-schema
+// generator client {
+//   provider = "prisma-client-js"
+// }
+
+// datasource db {
+//   provider = "sqlite"
+//   url      = env("DATABASE_URL")
+// }
+
+// model User {
+//   id         String    @id @default(uuid()) // Primary key using UUID
+//   email      String    @unique
+//   username   String    @unique
+//   password   String
+//   avatar     String?
+//   createdAt  DateTime  @default(now())
+//   posts Post[]
+// }
+
+// model Post {
+//   id         String   @id @default(uuid())
+//   title      String
+//   price      Int
+//   image      String
+//   address    String
+//   city       String
+//   bedroom    Int
+//   bathroom   Int
+//   longitude  String
+//   latitude  String
+//   type       String
+//   property   String
+//   createdAt  DateTime @default(now())
+//   user       User     @relation(fields: [userId], references: [id])
+//   userId     String
+//   postDetail PostDetail?
+// }
+// model PostDetail {
+//   id         String  @id @default(uuid())  // UUID as the primary key
+//   desc       String
+//   utilities  String?
+//   pet        String?
+//   income     String?
+//   size       Int?
+//   school     Int?
+//   bus        Int?
+//   restaurant Int?
+//   post       Post    @relation(fields: [postId], references: [id])
+//   postId     String  @unique
+// }
+
+
+//after updateing schema 
+// npx prisma db push
 
 generator client {
   provider = "prisma-client-js"
 }
 
 datasource db {
-  provider = "sqlite"
+  provider = "mongodb"
   url      = env("DATABASE_URL")
 }
 
 model User {
-  id         String    @id @default(uuid()) // Primary key using UUID
-  email      String    @unique
-  username   String    @unique
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
+  email      String      @unique
+  username   String      @unique
   password   String
   avatar     String?
-  createdAt  DateTime  @default(now())
-  posts Post[]
+  createdAt  DateTime    @default(now())
+  posts      Post[]
+  // savedPosts SavedPost[]
+  // chats      Chat[]      @relation(fields: [chatIDs], references: [id])
+  // chatIDs    String[]    @db.ObjectId
 }
 
 model Post {
-  id         String     @id @default(uuid())
+  id         String      @id @default(auto()) @map("_id") @db.ObjectId
   title      String
   price      Int
-  images     String
+  images     String[]
   address    String
   city       String
   bedroom    Int
   bathroom   Int
-  longitude  String
   latitude   String
-  type       String
-  property   String
-  createdAt  DateTime   @default(now())
-  user       User       @relation(fields: [userId], references: [id])
-  userId     String
-  postDetail PostDetail? // Related table to store images
+  longitude  String
+  type       Type
+  property   Property
+  createdAt  DateTime    @default(now())
+  user       User        @relation(fields: [userId], references: [id])
+  userId     String      @db.ObjectId
+  postDetail PostDetail?
+  // savedPosts SavedPost[]
+}
+
+enum Type {
+  longterm
+  shortterm
+}
+
+enum Property {
+  apartment
+  boardinghouse
+  dormitory
 }
 
 model PostDetail {
-  id         String   @id @default(uuid())  // Use UUID instead of ObjectId
+  id         String  @id @default(auto()) @map("_id") @db.ObjectId
   desc       String
   utilities  String?
   pet        String?
@@ -49,10 +116,6 @@ model PostDetail {
   school     Int?
   bus        Int?
   restaurant Int?
-  post       Post     @relation(fields: [postId], references: [id])
-  postId     String  @unique
+  post       Post    @relation(fields: [postId], references: [id])
+  postId     String  @unique @db.ObjectId
 }
-
-
-//after updateing schema 
-// npx prisma db push

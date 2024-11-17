@@ -27,20 +27,25 @@ const ProfilePage = () => {
             <div className="wrapper">
                 <div className="title">
                     <h1>User Information</h1>
-                    <Link to="/profile/update">
+                    {/* <Link to="/profile/update">
                         <button>Update Profile</button>
-                    </Link>
+                    </Link> */}
                 </div>
                 <div className="info">
-                    <span>Avatar:
+                    <span className='avatar'>Avatar:
                         <img
                             src={currentUser.avatar || "/noavatar.png"}
                             alt="profile picture"
                         />
                     </span>
-                    <span>Username: <b>{currentUser.username}</b></span>
-                    <span>Email: <b>{currentUser.email}</b></span>
-                    <button onClick={handleLogout}>logout</button>
+                    <span className='uname'>Username: <b>{currentUser.username}</b></span>
+                    <span className='email'>Email: <b>{currentUser.email}</b></span>
+                    <div className='btn_container'>
+                        <Link to="/profile/update">
+                            <button className='updateBtn'>Update Profile</button>
+                        </Link>
+                        <button onClick={handleLogout}>logout</button>
+                    </div>
                 </div>
                 <div className="title">
                     <h1>My List</h1>

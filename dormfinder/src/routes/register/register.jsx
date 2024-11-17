@@ -13,7 +13,7 @@ function Register() {
     e.preventDefault()
     setError("")
     setIsLoading(true)
-    
+
 
     const formData = new FormData(e.target);
 
@@ -33,8 +33,6 @@ function Register() {
     }finally{
       setIsLoading(false);
     }
-    
-    
   };
 
   return (
