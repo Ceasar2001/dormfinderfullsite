@@ -7,7 +7,16 @@ import Pin from '../pin/Pin';
 
 const Map = ({items}) => {
   return (
-    <MapContainer center={[52.4797, -1.90269]} zoom={7} scrollWheelZoom={false} className='map'>
+    <MapContainer
+      center = {
+        items.length === 1
+          ? [items[0].latitude, items[0].longitude]
+          : [8.938238425840696, 125.53416172246052]
+        }
+          zoom={7}
+          scrollWheelZoom={false}
+          className='map'
+        >
         <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -22,4 +31,6 @@ const Map = ({items}) => {
 
 export default Map
 
+//butuan coordinate
+//8.938238425840696, 125.53416172246052
 //map source = https://react-leaflet.js.org/un

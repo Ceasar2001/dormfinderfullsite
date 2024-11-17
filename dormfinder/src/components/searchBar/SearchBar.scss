@@ -74,20 +74,27 @@
             }
         }
 
-        button{
-            border: none;
-            cursor: pointer;
-            background-color: rgb(39, 224, 39);
+        a{
             flex: 1;
-
-            @include sm{
+            background-color: #23a40a;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+      
+            button {
+              border: none;
+              cursor: pointer;
+              background-color: #23a40a;
+              
+              @include sm{
                 padding: 10px;
-            }
-
-            img{
+              }
+              
+              img {
                 width: 24px;
                 height: 24px;
+              }
             }
-        }
+          }
     }
 }

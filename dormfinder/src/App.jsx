@@ -14,6 +14,7 @@ import Contact from "./routes/contact/contact";
 import Faqs from "./routes/faqs/faqs";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./routes/newPostPage/newPostPage";
+import { listPageLoader, singlePageLoader } from "./lib/loaders";
 
 function App() {
 
@@ -40,11 +41,13 @@ function App() {
        },
        {
         path: "/list",
-        element: <ListPage />
+        element: <ListPage />,
+        loader: listPageLoader,
        },
        {
         path: "/:id",
-        element: <SinglePage />
+        element: <SinglePage />,
+        loader: singlePageLoader
        },
        {
         path: "/login",

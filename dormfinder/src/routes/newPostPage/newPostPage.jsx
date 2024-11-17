@@ -17,7 +17,6 @@ function NewPostPage() {
     e.preventDefault()
     const formData = new FormData(e.target)
     const inputs = Object.fromEntries(formData)
-    
 
     try {
       const res = await apiRequest.post("/posts", {
@@ -97,16 +96,16 @@ function NewPostPage() {
             <div className="item">
               <label htmlFor="type">Stay Type</label>
               <select name="type">
-                <option value="rent" defaultChecked>LongTerm</option>
-                <option value="buy">ShortTerm</option>
+                <option value="longterm" defaultChecked>LongTerm</option>
+                <option value="shortterm">ShortTerm</option>
               </select>
             </div>
             <div className="item">
               <label htmlFor="type">Property Type</label>
               <select name="property">
                 <option value="apartment">Apartment</option>
-                <option value="house">House</option>
-                <option value="Dormitory">Dormitory</option>
+                <option value="boardinghouse">Boarding House</option>
+                <option value="dormitory">Dormitory</option>
               </select>
             </div>
             <div className="item">
@@ -149,7 +148,7 @@ function NewPostPage() {
               <label htmlFor="restaurant">Restaurant Distance</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
             </div>
-            <button className="sendButton">Add</button>
+            <button className="sendButton">Add New Post</button>
             {error && <span>error</span>}
           </form>
         </div>
