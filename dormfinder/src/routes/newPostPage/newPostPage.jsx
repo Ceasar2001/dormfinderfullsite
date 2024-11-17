@@ -32,7 +32,7 @@ function NewPostPage() {
           property: inputs.property,
           latitude: inputs.latitude,
           longitude: inputs.longitude,
-          images: images.images,
+          images: images,
         },
         postDetail: {
           desc: value,
@@ -48,7 +48,7 @@ function NewPostPage() {
       navigate("/"+res.data.id)
     } catch (err) {
       console.log(err);
-      setError(err);
+      setError(error);
     }
   }
 
