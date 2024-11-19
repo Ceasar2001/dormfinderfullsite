@@ -14,7 +14,7 @@ import Contact from "./routes/contact/contact";
 import Faqs from "./routes/faqs/faqs";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./routes/newPostPage/newPostPage";
-import { listPageLoader, singlePageLoader } from "./lib/loaders";
+import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loaders";
 
 function App() {
 
@@ -64,7 +64,8 @@ function App() {
       children:[
         {
           path: "/profile",
-          element: <ProfilePage />
+          element: <ProfilePage />,
+          loader: profilePageLoader
          },
         {
           path: "/profile/update",
