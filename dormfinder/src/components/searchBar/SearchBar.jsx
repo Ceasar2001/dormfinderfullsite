@@ -13,7 +13,7 @@ const SearchBar = () => {
     });
 
     const switchType = (val) => {
-        setQuery((prev) => ({...prev,type:val}));
+        setQuery((prev) => ({...prev, type: val}));
     };
 
     const handleChange = e => {

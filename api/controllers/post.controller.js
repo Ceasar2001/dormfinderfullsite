@@ -2,7 +2,7 @@ import prisma from "../lib/prisma.js";
 
 export const getPosts = async(req, res) => {
     const query = req.query;
-    
+
     try {
         const posts = await prisma.post.findMany({
             where: {
@@ -16,8 +16,9 @@ export const getPosts = async(req, res) => {
                 },
               },
         });
-
-        res.status(200).json(posts)
+            // setTimeout(() => {
+            res.status(200).json(posts)
+        // }, 1000);
     } catch (err) {
         console.log(err)
         res.status(500).json({
@@ -25,6 +26,7 @@ export const getPosts = async(req, res) => {
         })
     }
 }
+
 
 export const getPost = async(req, res) => {
     const id = req.params.id;
