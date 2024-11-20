@@ -12,21 +12,36 @@ const SinglePage = () => {
   const [saved, setSaved] = useState(post.isSaved);
   const  {currentUser} = useContext(AuthContext);
   const navigate = useNavigate();
+  const [rating, setRating] = useState(0); // Current rating
+  const [comment, setComment] = useState(""); // Current comment
+  const [comments, setComments] = useState([]); // List of comments
 
   const handleSave = async () => {
+    if (!currentUser) {
+      navigate("/login");
+    }
 
-      if (!currentUser) {
-        navigate("/login");
-      }
-
+    setSaved((prev) => !prev);
+    try {
+      await apiRequest.post("/users/save", { postId: post.id });
+    } catch (err) {
+      console.log(err);
       setSaved((prev) => !prev);
-      try {
-        await apiRequest.post("/users/save", {postId: post.id});
-      } catch (err) {
-          console.log(err);
-          setSaved((prev) => !prev);
-      }
+    }
   };
+
+  const handleRating = (value) => {
+    setRating(value);
+  };
+
+  const handleAddComment = () => {
+    if (comment.trim()) {
+      setComments((prev) => [...prev, { rating, text: comment }]);
+      setComment("");
+      setRating(0);
+    }
+  };
+
 
   return (
     <div className='singlePage'>
@@ -54,7 +69,51 @@ const SinglePage = () => {
             </div>
           </div>
         </div>
+
+        <div className="ratingComments">
+        <div className="wrapper">
+          <h2>Rate & Comment</h2>
+          <div className="rating">
+            <p>Rate this post:</p>
+            <div className="stars">
+              {[1, 2, 3, 4, 5].map((value) => (
+                <span
+                  key={value}
+                  className={value <= rating ? "star selected" : "star"}
+                  onClick={() => handleRating(value)}
+                >
+                  ★
+                </span>
+              ))}
+            </div>
+          </div>
+          <textarea
+            placeholder="Write a comment..."
+            value={comment}
+            onChange={(e) => setComment(e.target.value)}
+          ></textarea>
+          <button onClick={handleAddComment}>Submit</button>
+
+          <div className="commentsList">
+            <h3>Comments</h3>
+            {comments.length > 0 ? (
+              comments.map((c, index) => (
+                <div className="comment" key={index}>
+                  <div className="commentHeader">
+                    <span>{'★'.repeat(c.rating).padEnd(5, '☆')}</span>
+                  </div>
+                  <p>{c.text}</p>
+                </div>
+              ))
+            ) : (
+              <p>No comments yet. Be the first to comment!</p>
+            )}
+          </div>
+        </div>
       </div>
+      </div>
+
+      
 
       <div className="features">
         <div className="wrapper">

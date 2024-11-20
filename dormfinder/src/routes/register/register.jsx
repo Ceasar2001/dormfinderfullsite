@@ -20,10 +20,11 @@ function Register() {
     const username = formData.get("username");
     const email = formData.get("email");
     const password = formData.get("password");
+    const role = formData.get("role");
 
     try{
         const res = await apiRequest.post("/auth/register",{
-        username, email, password
+        username, email, password, role,
       })
 
       navigate("/login");
@@ -43,6 +44,13 @@ function Register() {
           <input name="username" type="text" placeholder="Username" />
           <input name="email" type="text" placeholder="Email" />
           <input name="password" type="password" placeholder="Password" />
+            <select name="role" required>
+              <option value="" disabled selected>
+                Select Role
+              </option>
+              <option value="houseowner">House Owner</option>
+              <option value="user">User</option>
+            </select>
           <button disabled={isLoading}>Register</button>
           {error && <span className="">{error}</span>}
           <Link to="/login">Do you have an account?</Link>

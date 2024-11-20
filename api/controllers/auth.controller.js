@@ -5,17 +5,25 @@ import jwt from "jsonwebtoken";
 export const register = async (req, res) => {
     const {username, email, password} = req.body;
 
+    // if (!['houseowner', 'user'].includes(role)) {
+    //     return res.status(400).json({ message: "Invalid role" });
+    //   }
+
     try{
     //HASH the password
     const hashedPassword = await bcryptjs.hash(password, 10);
 
     console.log(hashedPassword)
     //CREATE a new user and save to DB
+    // Create the user with the role
     const newUser = await prisma.user.create({
-        data:{
-            username, email, password:hashedPassword,
+        data: {
+          username,
+          email,
+          password: hashedPassword,
+          
         },
-    });
+      });
 
     res.status(201).json({message: "User created Successfully"});
     }catch(err){
@@ -23,6 +31,30 @@ export const register = async (req, res) => {
         res.status(500).json({message: "Failed to create User"});
     }
 };
+
+export const verifyRole = (role) => {
+    return (req, res, next) => {
+      const token = req.cookies.token;
+  
+      if (!token) {
+        return res.status(401).json({ message: "Unauthorized" });
+      }
+  
+      jwt.verify(token, process.env.JWT_SECRET_KEY, (err, payload) => {
+        if (err) {
+          return res.status(403).json({ message: "Forbidden" });
+        }
+  
+        if (payload.role !== role) {
+          return res.status(403).json({ message: `Access restricted to ${role}s only` });
+        }
+  
+        req.userId = payload.id;
+        next();
+      });
+    };
+  };
+  
 
 export const login = async (req, res) => {
     const {username, password} = req.body;
