@@ -12,7 +12,7 @@ export const listData = [
       latitude: 8.956901786683192,
       longitude: 125.60007141095728,
     },
-
+    //8.955433764845855, 125.59790132209585
     //8.956901786683192, 125.60007141095728
     {
       id: 2,
@@ -22,8 +22,8 @@ export const listData = [
       bathroom: 2,
       price: 1500,
       address: "Villa Paraiso, Ampayon Butuan City",
-      latitude: 52.4862,
-      longitude: -1.8904,
+      latitude: 8.955433764845855,
+      longitude: 125.59790132209585,
     },
     {
       id: 3,

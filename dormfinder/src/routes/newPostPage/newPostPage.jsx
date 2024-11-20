@@ -90,20 +90,25 @@ function NewPostPage() {
               title="you have to go to google map to get your exact latitude and longitude for location"
               htmlFor="latitude">Location Latitude</label>
               <input
-                title="you have to go to google map to get your exact latitude and longitude for location"
+                title="use this for testing"
                 id="latitude"
                 name="latitude"
-                type="text" />
+                type="text" 
+                placeholder="for test 8.955433764845855"
+                value={8.955433764845855}
+                />
             </div>
             <div className="item">
               <label
               title="you have to go to google map to get your exact latitude and longitude for location"
               htmlFor="longitude">Location Longitude</label>
               <input
-              title="you have to go to google map to get your exact latitude and longitude for location"
+              title="use this for testing"
               id="longitude"
               name="longitude"
-              type="text" />
+              type="text" 
+              value={125.59790132209585}
+              />
             </div>
             <div className="item">
               <label htmlFor="type">Stay Type</label>
@@ -165,7 +170,7 @@ function NewPostPage() {
           </form>
         </div>
       </div>
-      <div className="sideContainer">
+      <div className="sideContainer" title="double click, upload 4 pictures only">
         {
           images.map((image, index) => (
             <img src={image} key={index} alt="" />
