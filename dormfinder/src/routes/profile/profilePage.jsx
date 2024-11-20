@@ -3,17 +3,17 @@ import Chat from '../../components/chat/Chat'
 import List from '../../components/list/List'
 import apiRequest from '../../lib/apiRequest'
 import './profilePage.scss'
-import { Suspense, useContext } from 'react'
+import { Suspense, useContext, useState } from 'react'
 import { AuthContext } from "../../context/AuthContext";
-import Card from '../../components/card/Card'
 
 const ProfilePage = () => {
 
     const data = useLoaderData();
-
     const {updateUser, currentUser} = useContext(AuthContext)
-
     const navigate = useNavigate()
+
+
+    const [isChatVisible, setIsChatVisible] = useState(false);
 
     const handleLogout = async () => {
         try {
@@ -24,6 +24,11 @@ const ProfilePage = () => {
             console.log(err);
         }
     }
+
+    // Toggle chat visibility
+  const toggleChat = () => {
+    setIsChatVisible((prev) => !prev);
+  };
 
   return (
         <div className='profilePage'>
@@ -80,7 +85,14 @@ const ProfilePage = () => {
         </div>
         <div className="chatContainer">
             <div className="wrapper">
-                <Chat />
+            <Suspense fallback={<p>Please Wait Were Loading all message data...</p>}>
+                    <Await
+                        resolve={data.chatResponse}
+                        errorElement={<p>Error loading chats!</p>}
+                    >
+                        {(chatResponse) => <Chat chats={chatResponse.data}/> }
+                    </Await>
+            </Suspense>
             </div>
         </div>
     </div>

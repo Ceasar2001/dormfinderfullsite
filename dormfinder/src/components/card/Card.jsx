@@ -1,7 +1,7 @@
 import { Link } from 'react-router-dom'
 import './card.scss'
 
-const Card = ({item}) => {
+const Card = ({item, toggleChat}) => {
   return (
     <div className='card'>
       <Link to={`/${item.id}`} className='imageContainer'>
@@ -29,14 +29,13 @@ const Card = ({item}) => {
           </div>
 
           <div className="icons">
-            <div className="icon">
+            {/* <div className="icon">
               <img src="/save.png" alt="save icon" />
-            </div>
-            <div className="icon">
+            </div> */}
+            <div className="icon" onClick={toggleChat}>
               <img src="/chat.png" alt="chat icon" />
             </div>
           </div>
-          
         </div>
       </div>
     </div>
