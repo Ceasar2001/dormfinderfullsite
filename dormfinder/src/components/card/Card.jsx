@@ -4,8 +4,8 @@ import './card.scss'
 const Card = ({item, toggleChat}) => {
   return (
     <div className='card'>
-      <Link to={`/${item.id}`} className='imageContainer'>
-        <img src={item.img} alt="image of boarding houses or dormitory" />
+      <Link to={`/${item.id}`} className="imageContainer">
+        <img src={item.images[0]} alt="" />
       </Link>
 
       <div className="textContainer">

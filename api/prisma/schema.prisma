@@ -95,5 +95,5 @@ model Message {
   createdAt DateTime @default(now())
 }
 
-//after updateing schema
+//after updating schema
 // npx prisma db push

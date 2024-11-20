@@ -78,20 +78,32 @@ function NewPostPage() {
               <input id="city" name="city" type="text" />
             </div>
             <div className="item">
-              <label htmlFor="bedroom">Bedroom Number</label>
+              <label htmlFor="bedroom">Available Bedroom</label>
               <input min={1} id="bedroom" name="bedroom" type="number" />
             </div>
             <div className="item">
               <label htmlFor="bathroom">Bathroom Number</label>
               <input min={1} id="bathroom" name="bathroom" type="number" />
             </div>
-            <div className="item">
-              <label htmlFor="latitude">Location Latitude</label>
-              <input id="latitude" name="latitude" type="text" />
+            <div className="item test" >
+              <label
+              title="you have to go to google map to get your exact latitude and longitude for location"
+              htmlFor="latitude">Location Latitude</label>
+              <input
+                title="you have to go to google map to get your exact latitude and longitude for location"
+                id="latitude"
+                name="latitude"
+                type="text" />
             </div>
             <div className="item">
-              <label htmlFor="longitude">Location Longitude</label>
-              <input id="longitude" name="longitude" type="text" />
+              <label
+              title="you have to go to google map to get your exact latitude and longitude for location"
+              htmlFor="longitude">Location Longitude</label>
+              <input
+              title="you have to go to google map to get your exact latitude and longitude for location"
+              id="longitude"
+              name="longitude"
+              type="text" />
             </div>
             <div className="item">
               <label htmlFor="type">Stay Type</label>
@@ -124,7 +136,7 @@ function NewPostPage() {
               </select>
             </div>
             <div className="item">
-              <label htmlFor="income">Income Policy</label>
+              <label htmlFor="income">Payment Policy</label>
               <input
                 id="income"
                 name="income"
@@ -137,15 +149,15 @@ function NewPostPage() {
               <input min={0} id="size" name="size" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="school">School Distance</label>
+              <label htmlFor="school">School Distance (m)</label>
               <input min={0} id="school" name="school" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="bus">Bus Distance</label>
+              <label htmlFor="bus">Bus Distance (m)</label>
               <input min={0} id="bus" name="bus" type="number" />
             </div>
             <div className="item">
-              <label htmlFor="restaurant">Restaurant Distance</label>
+              <label htmlFor="restaurant">Restaurant Distance (m)</label>
               <input min={0} id="restaurant" name="restaurant" type="number" />
             </div>
             <button className="sendButton">Add New Post</button>

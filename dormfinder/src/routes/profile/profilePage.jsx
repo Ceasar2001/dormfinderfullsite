@@ -13,7 +13,6 @@ const ProfilePage = () => {
     const navigate = useNavigate()
 
 
-    const [isChatVisible, setIsChatVisible] = useState(false);
 
     const handleLogout = async () => {
         try {
@@ -25,10 +24,7 @@ const ProfilePage = () => {
         }
     }
 
-    // Toggle chat visibility
-  const toggleChat = () => {
-    setIsChatVisible((prev) => !prev);
-  };
+ 
 
   return (
         <div className='profilePage'>

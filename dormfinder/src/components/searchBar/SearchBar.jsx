@@ -7,7 +7,7 @@ const types = ["longterm", "shortterm"]
 const SearchBar = () => {
     const [query, setQuery] = useState({
         type: "longterm",
-        location:"",
+        city:"",
         minPrice:0,
         maxPrice:0,
     });
@@ -33,7 +33,7 @@ const SearchBar = () => {
                 </button>
             ))}
         </div>
-        <form action="">
+        <form>
             <input type="text" name='Location' placeholder='Address' onChange={handleChange}/>
             <input type="number" name='minPrice' min={0} max={4000} placeholder='Min Price' onChange={handleChange}/>
             <input type="number" name='maxPrice' min={0} max={4000} placeholder='Max Price' onChange={handleChange}/>
@@ -48,7 +48,7 @@ const SearchBar = () => {
         </form>
 
     </div>
-  )
+  );
 }
 
 export default SearchBar

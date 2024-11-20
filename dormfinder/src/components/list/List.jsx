@@ -1,12 +1,12 @@
-import Card from '../card/Card'
 import './list.scss'
+import Card from"../card/Card"
 
-const List = ({posts}) => {
+function List({posts}){
   return (
     <div className='list'>
-        {posts.map(item=>(
-            <Card key={item.id} item={item}/>
-        ))}
+      {posts.map(item=>(
+        <Card key={item.id} item={item}/>
+      ))}
     </div>
   )
 }

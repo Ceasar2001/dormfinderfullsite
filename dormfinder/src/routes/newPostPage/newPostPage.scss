@@ -2,6 +2,8 @@
   height: 100%;
   display: flex;
 
+
+
   .formContainer {
     flex: 3;
     overflow: scroll;
@@ -20,9 +22,6 @@
           display: flex;
           flex-direction: column;
           gap: 5px;
-
-          label {
-          }
 
           input {
             padding: 20px;

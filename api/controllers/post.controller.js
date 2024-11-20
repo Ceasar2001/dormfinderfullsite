@@ -7,16 +7,16 @@ export const getPosts = async(req, res) => {
     try {
         const posts = await prisma.post.findMany({
             where: {
-                city: query.city || undefined,
-                type: query.type || undefined,
-                property: query.property || undefined,
-                bedroom: parseInt(query.bedroom) || undefined,
-                price: {
-                  gte: parseInt(query.minPrice) || undefined,
-                  lte: parseInt(query.maxPrice) || undefined,
-                },
+              city: query.city || undefined,
+              type: query.type || undefined,
+              property: query.property || undefined,
+              bedroom: parseInt(query.bedroom) || undefined,
+              price: {
+                gte: parseInt(query.minPrice) || undefined,
+                lte: parseInt(query.maxPrice) || undefined,
               },
-        });
+            },
+          });
             // setTimeout(() => {
             res.status(200).json(posts)
         // }, 1000);

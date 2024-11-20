@@ -23,11 +23,11 @@ const HomePage = () => {
                 <div className='boxes'>
                     <div className='box'>
                         <h1>5</h1>
-                        <h2>Girls only</h2>
+                        <h2>Dormitory</h2>
                     </div>
                     <div className='box'>
                         <h1>5</h1>
-                        <h2>Boys only</h2>
+                        <h2>Apartment</h2>
                     </div>
                     <div className='box'>
                         <h1>10</h1>
