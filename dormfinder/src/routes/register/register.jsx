@@ -27,6 +27,7 @@ function Register() {
         username, email, password, role,
       })
 
+      localStorage.setItem("userRole", role);
       navigate("/login");
     }catch(err){
       console.log(err);
@@ -57,7 +58,7 @@ function Register() {
         </form>
       </div>
       <div className="imgContainer">
-        <img src="/bg.png" alt="" />
+      <img src="/bg.png" alt="" />
       </div>
     </div>
   );

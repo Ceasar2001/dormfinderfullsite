@@ -52,6 +52,7 @@ export const getPost = async(req, res) => {
 
         if(!token){
             userId = null;
+            return res.status(401).json({ message: 'Unauthorized. Please login.' });
         }else{
             jwt.verify(token, process.env.JWT_SECRET_KEY, async(err, payload)=>{
                 if(err){

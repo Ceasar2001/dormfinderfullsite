@@ -3,7 +3,7 @@ import Chat from '../../components/chat/Chat'
 import List from '../../components/list/List'
 import apiRequest from '../../lib/apiRequest'
 import './profilePage.scss'
-import { Suspense, useContext, useState } from 'react'
+import { Suspense, useContext, useEffect, useState } from 'react'
 import { AuthContext } from "../../context/AuthContext";
 
 const ProfilePage = () => {
@@ -11,6 +11,18 @@ const ProfilePage = () => {
     const data = useLoaderData();
     const {updateUser, currentUser} = useContext(AuthContext)
     const navigate = useNavigate()
+    const [role, setRole] = useState(null);
+
+    useEffect(() => {
+        const storeRole = localStorage.getItem("userRole");
+        setRole(storeRole);
+    }, []);
+
+    if(!role){
+        return(
+            <div>Loading...</div>
+        )
+    }
 
 
 
@@ -23,8 +35,6 @@ const ProfilePage = () => {
             console.log(err);
         }
     }
-
- 
 
   return (
         <div className='profilePage'>
@@ -52,21 +62,31 @@ const ProfilePage = () => {
                         <button onClick={handleLogout}>logout</button>
                     </div>
                 </div>
-                <div className="title">
-                    <h1>My List</h1>
-                    <Link to='/add'>
-                        <button>Create New Post</button>
-                    </Link>
-                </div>
-                <Suspense fallback={<p>Please Wait Were Loading all data...</p>}>
+
+                {role === "houseowner" && (
+                    <div className="houseOnwerUI">
+                        <div className="title">
+                        <h1>My List</h1>
+                        <Link to='/add'>
+                            <button>Create New Post</button>
+                        </Link>
+                    </div>
+                        <Suspense fallback={<p>Please Wait Were Loading all data...</p>}>
                     <Await
                         resolve={data.postResponse}
                         errorElement={<p>Error loading posts!</p>}
                     >
                         {(postResponse) => <List posts = {postResponse.data.userPosts}/> }
                     </Await>
-                </Suspense>
-                <div className="title">
+                    </Suspense>
+                
+                    </div>
+                )}
+                
+                
+                {role === "user" && (
+                    <div className="userUI">
+                         <div className="title">
                     <h1>Saved List</h1>
                 </div>
                 <Suspense fallback={<p>Please Wait Were Loading all data...</p>}>
@@ -77,6 +97,8 @@ const ProfilePage = () => {
                         {(postResponse) => <List posts = {postResponse.data.savedPosts}/> }
                     </Await>
                 </Suspense>
+                    </div>
+                )}
             </div>
         </div>
         <div className="chatContainer">

@@ -2,6 +2,8 @@ import { Link } from 'react-router-dom'
 import './card.scss'
 
 const Card = ({item, toggleChat}) => {
+
+
   return (
     <div className='card'>
       <Link to={`/${item.id}`} className="imageContainer">
