@@ -18,11 +18,6 @@ const ProfilePage = () => {
         setRole(storeRole);
     }, []);
 
-    if(!role){
-        return(
-            <div>Loading...</div>
-        )
-    }
 
 
 
@@ -62,8 +57,7 @@ const ProfilePage = () => {
                         <button onClick={handleLogout}>logout</button>
                     </div>
                 </div>
-
-                {role === "houseowner" && (
+               
                     <div className="houseOnwerUI">
                         <div className="title">
                         <h1>My List</h1>
@@ -81,10 +75,9 @@ const ProfilePage = () => {
                     </Suspense>
                 
                     </div>
-                )}
                 
                 
-                {role === "user" && (
+                
                     <div className="userUI">
                          <div className="title">
                     <h1>Saved List</h1>
@@ -98,7 +91,6 @@ const ProfilePage = () => {
                     </Await>
                 </Suspense>
                     </div>
-                )}
             </div>
         </div>
         <div className="chatContainer">

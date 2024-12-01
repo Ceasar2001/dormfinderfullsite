@@ -5,6 +5,8 @@ import apiRequest from "../../lib/apiRequest.js"
 import "./profileUpdatePage.scss";
 import {useNavigate} from "react-router-dom";
 import UploadWidget from "../../components/uploadWidget/UploadWidget.jsx";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 function ProfileUpdatePage() {
   const { currentUser, updateUser } = useContext(AuthContext);
@@ -13,11 +15,16 @@ function ProfileUpdatePage() {
 
   const navigate = useNavigate()
 
+    
+
   const handleSubmit = async (e) => {
     e.preventDefault()
     const formData = new FormData(e.target)
     const {username, email, password} = Object.fromEntries(formData);
 
+    //display success notification
+    toast.success("profile successfully updated!");
+    
     try {
       const res = await apiRequest.put(`/users/${currentUser.id}`, {
         username, email, password, avatar:avatar[0],
@@ -34,6 +41,7 @@ function ProfileUpdatePage() {
   return (
     <div className="profileUpdatePage">
       <div className="formContainer">
+      <ToastContainer />
         <form onSubmit={handleSubmit}>
           <h1>Update Profile</h1>
           <div className="item">

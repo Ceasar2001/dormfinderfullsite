@@ -19,6 +19,7 @@
     "react-leaflet": "^4.2.1",
     "react-quill": "^2.0.0",
     "react-router-dom": "^6.27.0",
+    "react-toastify": "^10.0.6",
     "timeago.js": "^4.0.2"
   },
   "devDependencies": {

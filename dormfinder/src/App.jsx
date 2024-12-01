@@ -14,6 +14,7 @@ import Contact from "./routes/contact/contact";
 import Faqs from "./routes/faqs/faqs";
 import ProfileUpdatePage from "./routes/profileUpdatePage/profileUpdatePage";
 import NewPostPage from "./routes/newPostPage/newPostPage";
+import HomeOwner from "./routes/homeowner/homeowner";
 import { listPageLoader, profilePageLoader, singlePageLoader } from "./lib/loaders";
 
 function App() {
@@ -57,6 +58,7 @@ function App() {
         path: "/register",
         element: <Register />,
       },
+      
       ]
     },{
       path: "/",
@@ -74,6 +76,10 @@ function App() {
         {
           path: "/add",
           element: <NewPostPage />
+         },
+        {
+          path: "/homeowner",
+          element: <HomeOwner />
          },
       ],
     },

@@ -6,6 +6,8 @@ import DOMPurify from "dompurify";
 import { useContext, useState } from 'react';
 import { AuthContext } from "../../context/AuthContext"
 import apiRequest from "../../lib/apiRequest"
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const SinglePage = () => {
   const post = useLoaderData();
@@ -15,6 +17,8 @@ const SinglePage = () => {
   const [rating, setRating] = useState(0); // Current rating
   const [comment, setComment] = useState(""); // Current comment
   const [comments, setComments] = useState([]); // List of comments
+
+  toast.success("property successfully saved");
 
   const handleSave = async () => {
     if (!currentUser) {
@@ -45,6 +49,7 @@ const SinglePage = () => {
 
   return (
     <div className='singlePage'>
+      <ToastContainer />
       <div className="details">
         <div className="wrapper">
           <Slider images={post.images} />
@@ -69,6 +74,8 @@ const SinglePage = () => {
             </div>
           </div>
         </div>
+
+             <br /> <hr />
 
         <div className="ratingComments">
         <div className="wrapper">
@@ -202,7 +209,7 @@ const SinglePage = () => {
                 backgroundColor: saved ? "green" : "white",
               }}>
                 <img src="/save.png" alt="" />
-                {saved ? "Place Saved" : "Save The House"}
+                {saved ? "Place Saved" : "Save"}
               </button>
             </div>
         </div>
